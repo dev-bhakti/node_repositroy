@@ -1,0 +1,51 @@
+<div>
+  <h2>All Blogs</h2>
+
+  <div class="search-bar" style="margin-bottom: 1.5rem;">
+    <div style="display: flex; gap: 0.5rem;">
+      <input
+        type="text"
+        [(ngModel)]="searchQuery"
+        placeholder="Search blogs..."
+        (keyup.enter)="onSearch()"
+        style="flex: 1;"
+      >
+      <button class="btn btn-primary" (click)="onSearch()">Search</button>
+    </div>
+  </div>
+
+  <div class="spinner" *ngIf="loading"></div>
+
+  <div class="alert alert-error" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+
+  <div class="blog-list" *ngIf="!loading && blogs.length > 0">
+    <div class="blog-item" *ngFor="let blog of blogs">
+      <h3>{{ blog.title }}</h3>
+      <div class="meta">
+        <span>By {{ getAuthorName(blog) }}</span>
+        <span> | </span>
+        <span>{{ blog.createdAt | date: 'medium' }}</span>
+      </div>
+      <p class="summary" *ngIf="blog.summary">{{ blog.summary }}</p>
+      <div class="tags" *ngIf="blog.tags && blog.tags.length > 0">
+        <span class="tag" *ngFor="let tag of blog.tags">{{ tag }}</span>
+      </div>
+      <button class="btn btn-primary" (click)="viewBlog(blog.id)">View More</button>
+    </div>
+  </div>
+
+  <div *ngIf="!loading && blogs.length === 0">
+    <p style="text-align: center; color: #7f8c8d; padding: 2rem;">
+      No blogs found. {{ searchQuery ? 'Try a different search term.' : 'Be the first to create one!' }}
+    </p>
+  </div>
+
+  <div class="pagination" *ngIf="!loading && totalPages > 1">
+    <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+    <span>Page {{ currentPage }} of {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+  </div>
+</div>
+
