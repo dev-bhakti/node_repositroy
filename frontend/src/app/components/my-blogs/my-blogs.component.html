@@ -1,10 +1,10 @@
 <div>
-  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+  <div class="my-blogs-text">
     <h2 class="my-blogs">My Blogs</h2>
     <button class="btn btn-success" (click)="createBlog()">Create New Blog</button>
   </div>
 
-  <div class="filter-bar" style="margin-bottom: 1.5rem;">
+  <div class="filter-bar filter-blog" >
     <label class="status-filter" for="statusFilter">Filter by status: </label>
     <select id="statusFilter" [(ngModel)]="filterStatus" (change)="onFilterChange()">
       <option value="">All</option>
@@ -22,8 +22,8 @@
 
   <div class="blog-list" *ngIf="!loading && blogs.length > 0">
     <div class="blog-item" *ngFor="let blog of blogs">
-      <div style="display: flex; justify-content: space-between; align-items: start;">
-        <div style="flex: 1;">
+      <div class="blogs-card">
+        <div class="title-blog">
           <h3>{{ blog.title }}</h3>
           <div class="meta">
             <span>{{ blog.createdAt | date: 'medium' }}</span>
@@ -49,7 +49,7 @@
   </div>
 
   <div *ngIf="!loading && blogs.length === 0">
-    <p style="text-align: center; color: antiquewhite; padding: 2rem;">
+    <p class="no-blogs">
       You haven't created any blogs yet. Start writing!
     </p>
   </div>

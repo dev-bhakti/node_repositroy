@@ -42,3 +42,18 @@
   color: #856404;
 }
 
+.blog-card{
+  display: flex; 
+  justify-content: space-between; 
+  align-items: start;
+  margin-bottom: 1rem;
+}
+
+.button-class{
+  display: flex;
+  gap: 0.5rem;
+}
+
+.back-button{
+  float: right;
+}

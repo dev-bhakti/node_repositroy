@@ -60,3 +60,30 @@
 .status-filter{
   color: aliceblue;
 }
+
+.my-blogs-text{
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  margin-bottom: 1.5rem;
+}
+
+.filter-blog{
+  margin-bottom: 1.5rem;
+}
+
+.blogs-card{
+  display: flex; 
+  justify-content: space-between; 
+  align-items: start;
+}
+
+.title-blog{
+  flex: 1;
+}
+
+.no-blogs{
+  text-align: center; 
+  color: antiquewhite; 
+  padding: 2rem;
+}

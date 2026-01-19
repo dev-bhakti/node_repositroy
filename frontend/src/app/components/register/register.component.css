@@ -11,3 +11,12 @@
   font-size: 0.875rem;
 }
 
+.register-card{
+  max-width: 500px; 
+  margin: 2rem auto;
+}
+
+.login-link{
+  margin-top: 1rem; 
+  text-align: center;
+}

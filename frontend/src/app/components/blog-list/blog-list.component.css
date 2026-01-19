@@ -17,3 +17,23 @@
 .blog-page-text{
   color: #ecf0f1;
 }
+
+.search-bar{
+margin-bottom: 1.5rem;
+}
+
+.search-bar-input{
+  display: flex; 
+  gap: 0.5rem;
+}
+
+.search-input{
+   flex: 1; 
+   padding:12px
+}
+
+.no-blogs-text{
+  text-align: center; 
+  color: #7f8c8d; 
+  padding: 2rem
+}

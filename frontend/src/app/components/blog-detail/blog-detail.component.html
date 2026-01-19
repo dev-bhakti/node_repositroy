@@ -6,7 +6,7 @@
   </div>
 
   <div class="card" *ngIf="!loading && blog">
-    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+    <div class="blog-card">
       <div>
         <h2>{{ blog.title }}</h2>
         <div class="meta">
@@ -19,7 +19,7 @@
           </span>
         </div>
       </div>
-      <div *ngIf="isAuthor" style="display: flex; gap: 0.5rem;">
+      <div *ngIf="isAuthor" class="button-class">
         <button class="btn btn-primary" (click)="editBlog()">Edit</button>
         <button class="btn btn-danger" (click)="deleteBlog()">Delete</button>
       </div>
@@ -37,6 +37,6 @@
   </div>
 </div>
 
-<button class="btn btn-primary" (click)="goBack()" style="float: right;">
+<button class="btn btn-primary back-button" (click)="goBackToAllBlogs()">
       Back to Blogs
     </button>

@@ -69,7 +69,7 @@
       </select>
     </div>
 
-    <div style="display: flex; gap: 1rem;">
+    <div class="blog-form-buttons">
       <button type="submit" class="btn btn-primary" [disabled]="blogForm.invalid || loading">
         {{ loading ? 'Saving...' : (isEditMode ? 'Update Blog' : 'Create Blog') }}
       </button>

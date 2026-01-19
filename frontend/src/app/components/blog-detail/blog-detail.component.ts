@@ -77,7 +77,7 @@ export class BlogDetailComponent implements OnInit {
     }
   }
 
-  goBack(): void {
+  goBackToAllBlogs(): void {
     this.router.navigate(['/']);
   }
 
