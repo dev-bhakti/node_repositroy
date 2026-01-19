@@ -3,14 +3,14 @@ const Blog = db.Blog;
 const User = db.User;
 
 // Helper function to generate slug
-// const generateSlug = (title) => {
-//   return title
-//     .toLowerCase()
-//     .trim()
-//     .replace(/[^\w\s-]/g, '')
-//     .replace(/[\s_-]+/g, '-')
-//     .replace(/^-+|-+$/g, '');
-// };
+const generateSlug = (title) => {
+  return title
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/[\s_-]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+};
 
 // Get all blogs
 exports.getAllBlogs = async (req, res) => {

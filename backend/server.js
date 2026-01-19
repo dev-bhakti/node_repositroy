@@ -9,7 +9,7 @@ const routes = require('./routes');
 
 const app = express();
 
-// Middleware
+// Middleware code to not allowing website outside the server 
 app.use(cors({
   origin: appConfig.corsOrigin,
   credentials: true
@@ -20,14 +20,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // API routes
 app.use('/api', routes);
 
-// Health check route
-app.get('/health', (req, res) => {
-  res.status(200).json({
-    success: true,
-    message: 'Blog Platform API is running',
-    timestamp: new Date().toISOString()
-  });
-});
 
 // Error handling middleware
 app.use((err, req, res, next) => {

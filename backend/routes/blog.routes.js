@@ -4,14 +4,14 @@ const blogController = require('../controllers/blog.controller');
 const authMiddleware = require('../middleware/auth.middleware');
 
 // Public routes - GET all blogs and GET blog by ID
-router.get('/', blogController.getAllBlogs);
-router.get('/:id', blogController.getBlogById);
+router.get('/', blogController.getAllBlogs); //get all blogs
+router.get('/:id', blogController.getBlogById); //get blog by id
 
 // Protected routes - require authentication
-router.post('/', authMiddleware, blogController.createBlog);
-router.put('/:id', authMiddleware, blogController.updateBlog);
-router.delete('/:id', authMiddleware, blogController.deleteBlog);
-router.get('/user/my-blogs', authMiddleware, blogController.getUserBlogs);
+router.post('/', authMiddleware, blogController.createBlog); // create blog
+router.put('/:id', authMiddleware, blogController.updateBlog); //edit blog by id
+router.delete('/:id', authMiddleware, blogController.deleteBlog); //delete blog by id
+router.get('/user/my-blogs', authMiddleware, blogController.getUserBlogs); //get user specific blogs
 
 module.exports = router;
 
