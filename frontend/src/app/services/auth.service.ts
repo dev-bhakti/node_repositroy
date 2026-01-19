@@ -17,19 +17,6 @@ export class AuthService {
     this.loadUserFromStorage();
   }
 
-  private loadUserFromStorage(): void {
-    const token = this.getToken();
-    const userStr = localStorage.getItem('user');
-    if (token && userStr) {
-      try {
-        const user = JSON.parse(userStr);
-        this.currentUserSubject.next(user);
-      } catch (e) {
-        this.logout();
-      }
-    }
-  }
-
   register(data: RegisterRequest): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(`${this.apiUrl}/register`, data).pipe(
       tap(response => {
@@ -49,6 +36,20 @@ export class AuthService {
       })
     );
   }
+
+    private loadUserFromStorage(): void {
+    const token = this.getToken();
+    const userStr = localStorage.getItem('user');
+    if (token && userStr) {
+      try {
+        const user = JSON.parse(userStr);
+        this.currentUserSubject.next(user);
+      } catch (e) {
+        this.logout();
+      }
+    }
+  }
+
 
   logout(): void {
     localStorage.removeItem('token');

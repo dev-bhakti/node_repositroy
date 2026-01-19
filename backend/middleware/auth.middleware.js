@@ -15,16 +15,16 @@ const authMiddleware = async (req, res, next) => {
       });
     }
 
-    // Extract token
+    // Get the  token 
     const token = authHeader.split(' ')[1];
 
-    // Verify token
+    // Verify token added in auth
     const decoded = jwt.verify(token, appConfig.jwt.secret);
 
     // Get user from database
     const user = await User.findByPk(decoded.id);
 
-    if (!user) {
+    if (!user) { //When user created the token is generated, if we added wrong token it will give below error
       return res.status(401).json({
         success: false,
         message: 'Invalid token. User not found.'
@@ -38,7 +38,7 @@ const authMiddleware = async (req, res, next) => {
       });
     }
 
-    // Attach user to request object
+    // Attach user to request object  
     req.user = user;
     next();
   } catch (error) {

@@ -36,9 +36,12 @@ export class BlogDetailComponent implements OnInit {
     this.blogService.getBlogById(id).subscribe({
       next: (response) => {
         this.blog = response.data.blog;
+        console.log(response.data.blog)
         this.loading = false;
         
         const currentUser = this.authService.getCurrentUser();
+        console.log(currentUser);
+        
         this.isAuthor = currentUser?.id === this.blog.userId;
       },
       error: (error) => {
@@ -50,12 +53,15 @@ export class BlogDetailComponent implements OnInit {
 
   editBlog(): void {
     if (this.blog) {
+      console.log(this.blog);
       this.router.navigate(['/edit-blog', this.blog.id]);
     }
   }
 
   deleteBlog(): void {
     if (this.blog && confirm('Are you sure you want to delete this blog?')) {
+      console.log(this.blog.id);
+      
       this.blogService.deleteBlog(this.blog.id).subscribe({
         next: () => {
           this.router.navigate(['/my-blogs']);
@@ -72,6 +78,8 @@ export class BlogDetailComponent implements OnInit {
   }
 
   getAuthorName(): string {
+    console.log(this.blog?.author);
+    
     if (this.blog?.author) {
       const { firstName, lastName, username } = this.blog.author;
       if (firstName && lastName) {

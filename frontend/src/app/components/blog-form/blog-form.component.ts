@@ -32,7 +32,7 @@ export class BlogFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get('id'); //the route image after component initialized. map parameters extracted from url
     if (id) {
       this.isEditMode = true;
       this.blogId = parseInt(id);

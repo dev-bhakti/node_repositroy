@@ -8,7 +8,7 @@ exports.register = async (req, res) => {
   try {
     const { username, email, password, firstName, lastName } = req.body;
 
-    // Validate input
+    // Validate  the input entered at time of registration
     if (!username || !email || !password) {
       return res.status(400).json({
         success: false,
@@ -16,7 +16,7 @@ exports.register = async (req, res) => {
       });
     }
 
-    // Check if user already exists
+    // Check if user already exists in db
     const existingUser = await User.findOne({
       where: {
         [db.Sequelize.Op.or]: [{ email }, { username }]
@@ -30,7 +30,7 @@ exports.register = async (req, res) => {
       });
     }
 
-    // Create new user
+    // Create new user and add it in db
     const user = await User.create({
       username,
       email,
@@ -39,7 +39,7 @@ exports.register = async (req, res) => {
       lastName
     });
 
-    // Generate JWT token
+    // Generate jsonwebtoken
     const token = jwt.sign(
       { id: user.id, email: user.email },
       appConfig.jwt.secret,
@@ -86,16 +86,6 @@ exports.login = async (req, res) => {
       });
     }
 
-    // Validate password
-    // const isValidPassword = await user.validatePassword(password);
-
-    // if (!isValidPassword) {
-    //   return res.status(401).json({
-    //     success: false,
-    //     message: 'Invalid email or password.'
-    //   });
-    // }
-
     if (!user.isActive) {
       return res.status(403).json({
         success: false,
@@ -122,24 +112,6 @@ exports.login = async (req, res) => {
     res.status(500).json({
       success: false,
       message: 'Error logging in.',
-      error: error.message
-    });
-  }
-};
-
-// Get current user profile
-exports.getProfile = async (req, res) => {
-  try {
-    res.status(200).json({
-      success: true,
-      data: {
-        user: req.user.toJSON()
-      }
-    });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: 'Error fetching profile.',
       error: error.message
     });
   }
