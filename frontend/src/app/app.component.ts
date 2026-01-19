@@ -18,17 +18,18 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.authService.currentUser$.subscribe(user => {
+    this.authService.currentUser$.subscribe(user => { //observable,stream of data apart from actual data
+      console.log(this.currentUser,'currentUser')
       this.currentUser = user;
     });
   }
-
+  
   logout(): void {
     this.authService.logout();
     this.router.navigate(['/login']);
   }
 
-  navigateHome(): void {
+  goToHomePage(): void {
     this.router.navigate(['/']);
   }
 }

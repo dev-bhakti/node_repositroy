@@ -33,8 +33,11 @@ export class BlogFormComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id'); //the route image after component initialized. map parameters extracted from url
+    console.log(id,'id');
+    
     if (id) {
       this.isEditMode = true;
+      console.log(this.blogId,'blogId');
       this.blogId = parseInt(id);
       this.loadBlog(this.blogId);
     }
@@ -82,10 +85,14 @@ export class BlogFormComponent implements OnInit {
     const request = this.isEditMode && this.blogId
       ? this.blogService.updateBlog(this.blogId, blogData)
       : this.blogService.createBlog(blogData);
+      
+      console.log(request,'request in blog form');
 
     request.subscribe({
       next: (response) => {
         this.loading = false;
+        console.log(response,'response in blog creation');
+        
         this.successMessage = response.message;
         setTimeout(() => {
           this.router.navigate(['/my-blogs']);

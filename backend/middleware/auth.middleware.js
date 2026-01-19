@@ -7,6 +7,8 @@ const authMiddleware = async (req, res, next) => {
   try {
     // Get token from header
     const authHeader = req.headers.authorization;
+    console.log(authHeader,'authHeader is ');
+    
     
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
       return res.status(401).json({
@@ -20,11 +22,13 @@ const authMiddleware = async (req, res, next) => {
 
     // Verify token added in auth
     const decoded = jwt.verify(token, appConfig.jwt.secret);
+    console.log(decoded,'decoded token');
+    
 
     // Get user from database
     const user = await User.findByPk(decoded.id);
 
-    if (!user) { //When user created the token is generated, if we added wrong token it will give below error
+    if (!user) { //When user entered ivalid token
       return res.status(401).json({
         success: false,
         message: 'Invalid token. User not found.'
@@ -38,8 +42,11 @@ const authMiddleware = async (req, res, next) => {
       });
     }
 
-    // Attach user to request object  
+    console.log(req.user);
+    
+    // Attach user to request object
     req.user = user;
+    console.log(req.user);
     next();
   } catch (error) {
     if (error.name === 'JsonWebTokenError') {

@@ -35,6 +35,8 @@ export class BlogDetailComponent implements OnInit {
 
     this.blogService.getBlogById(id).subscribe({
       next: (response) => {
+        console.log(response,'response');
+        console.log(response.data,'response data is');
         this.blog = response.data.blog;
         console.log(response.data.blog)
         this.loading = false;
@@ -43,6 +45,8 @@ export class BlogDetailComponent implements OnInit {
         console.log(currentUser);
         
         this.isAuthor = currentUser?.id === this.blog.userId;
+        console.log(this.isAuthor,'isAuther value');
+        
       },
       error: (error) => {
         this.errorMessage = error.error?.message || 'Failed to load blog.';

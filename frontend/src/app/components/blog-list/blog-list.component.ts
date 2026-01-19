@@ -33,6 +33,8 @@ export class BlogListComponent implements OnInit {
 
     this.blogService.getAllBlogs(this.currentPage, this.limit, 'published', this.searchQuery).subscribe({
       next: (response) => {
+        console.log(response,'blogs response');
+        console.log(response.data,'response data')
         this.blogs = response.data.blogs;
         this.currentPage = response.data.pagination.page;
         this.totalPages = response.data.pagination.totalPages;
@@ -71,7 +73,10 @@ export class BlogListComponent implements OnInit {
   getAuthorName(blog: Blog): string {
     if (blog.author) {
       const { firstName, lastName, username } = blog.author;
-      if (firstName && lastName) {
+      // if (firstName && lastName && username) {
+      //   return `${firstName} ${lastName} ${username}`;
+      // }
+       if (firstName && lastName) {
         return `${firstName} ${lastName}`;
       }
       return username;

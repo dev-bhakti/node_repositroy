@@ -23,6 +23,7 @@ app.use('/api', routes);
 
 // Middleware related Error handling 
 app.use((err, req, res, next) => {
+  console.log(err,'error ', res, 'res ')
   console.error(err.stack);
   res.status(500).json({
     success: false,

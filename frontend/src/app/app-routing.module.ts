@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: '', component: BlogListComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'profile', component:RegisterComponent},
   { path: 'blog/:id', component: BlogDetailComponent },
   { path: 'create-blog', component: BlogFormComponent, canActivate: [AuthGuard] },
   { path: 'edit-blog/:id', component: BlogFormComponent, canActivate: [AuthGuard] },

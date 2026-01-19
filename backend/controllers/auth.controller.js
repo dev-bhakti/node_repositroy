@@ -7,7 +7,7 @@ const User = db.User;
 exports.register = async (req, res) => {
   try {
     const { username, email, password, firstName, lastName } = req.body;
-
+    console.log(req.body,'req.body')
     // Validate  the input entered at time of registration
     if (!username || !email || !password) {
       return res.status(400).json({
@@ -22,6 +22,8 @@ exports.register = async (req, res) => {
         [db.Sequelize.Op.or]: [{ email }, { username }]
       }
     });
+    console.log(existingUser, 'existing user');
+    
 
     if (existingUser) {
       return res.status(400).json({
@@ -38,6 +40,8 @@ exports.register = async (req, res) => {
       firstName,
       lastName
     });
+    console.log(user, 'create user');
+    
 
     // Generate jsonwebtoken
     const token = jwt.sign(
@@ -45,7 +49,8 @@ exports.register = async (req, res) => {
       appConfig.jwt.secret,
       { expiresIn: appConfig.jwt.expiresIn }
     );
-
+    console.log(token,'token');
+    
     res.status(201).json({
       success: true,
       message: 'User registered successfully.',
@@ -67,6 +72,8 @@ exports.register = async (req, res) => {
 exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
+    console.log(req.body);
+    
 
     // Validate input
     if (!email || !password) {
@@ -117,3 +124,19 @@ exports.login = async (req, res) => {
   }
 };
 
+exports.getProfile = async (req, res) => {
+  try {
+    res.status(200).json({
+      success: true,
+      data: {
+        user: req.user.toJSON()
+      }
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Error fetching profile.',
+      error: error.message
+    });
+  }
+};

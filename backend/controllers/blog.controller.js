@@ -16,14 +16,14 @@ const generateSlug = (title) => {
 exports.getAllBlogs = async (req, res) => {
   try {
     const { page = 1, limit = 10, status, search } = req.query;
-    const offset = (page - 1) * limit;
+    const offset = (page - 1) * limit; //data returned before returning result for the user
 
-    const whereClause = {};
+    const whereClause = {}; //dynamic object to filter particular blog
     
     if (status) {
       whereClause.status = status;
     } else {
-      whereClause.status = 'published'; // Default to published blogs
+      whereClause.status = 'published'; // By Default it shows published blogs
     }
 
     if (search) {
@@ -116,7 +116,7 @@ exports.createBlog = async (req, res) => {
       });
     }
 
-    // Generate slug
+    // Generate slug  which shows the readable url eg./blog/15
     let slug = generateSlug(title);
     let slugExists = await Blog.findOne({ where: { slug } });
     let counter = 1;

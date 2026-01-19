@@ -1,11 +1,11 @@
 <div>
   <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
-    <h2>My Blogs</h2>
+    <h2 class="my-blogs">My Blogs</h2>
     <button class="btn btn-success" (click)="createBlog()">Create New Blog</button>
   </div>
 
   <div class="filter-bar" style="margin-bottom: 1.5rem;">
-    <label for="statusFilter">Filter by status: </label>
+    <label class="status-filter" for="statusFilter">Filter by status: </label>
     <select id="statusFilter" [(ngModel)]="filterStatus" (change)="onFilterChange()">
       <option value="">All</option>
       <option value="draft">Draft</option>
@@ -49,7 +49,7 @@
   </div>
 
   <div *ngIf="!loading && blogs.length === 0">
-    <p style="text-align: center; color: #7f8c8d; padding: 2rem;">
+    <p style="text-align: center; color: antiquewhite; padding: 2rem;">
       You haven't created any blogs yet. Start writing!
     </p>
   </div>

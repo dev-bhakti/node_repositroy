@@ -33,6 +33,8 @@ export class MyBlogsComponent implements OnInit {
 
     this.blogService.getUserBlogs(this.currentPage, this.limit, this.filterStatus || undefined).subscribe({
       next: (response) => {
+        console.log(response, 'response');
+        console.log(response.data, 'response data');
         this.blogs = response.data.blogs;
         this.currentPage = response.data.pagination.page;
         this.totalPages = response.data.pagination.totalPages;
