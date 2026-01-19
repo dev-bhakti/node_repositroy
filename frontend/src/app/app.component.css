@@ -1,2 +1,5 @@
 /* Component specific styles can go here */
 
+.user-profile{
+    cursor: pointer;
+}

@@ -14,6 +14,7 @@ import { BlogListComponent } from './components/blog-list/blog-list.component';
 import { BlogDetailComponent } from './components/blog-detail/blog-detail.component';
 import { BlogFormComponent } from './components/blog-form/blog-form.component';
 import { MyBlogsComponent } from './components/my-blogs/my-blogs.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { MyBlogsComponent } from './components/my-blogs/my-blogs.component';
     BlogListComponent,
     BlogDetailComponent,
     BlogFormComponent,
-    MyBlogsComponent
+    MyBlogsComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

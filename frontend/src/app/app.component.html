@@ -6,7 +6,7 @@
       <ng-container *ngIf="currentUser">
         <a routerLink="/my-blogs" routerLinkActive="active">My Blogs</a>
         <a routerLink="/create-blog" routerLinkActive="active">Create Blog</a>
-        <span>Welcome, {{ currentUser.username }} !</span>
+        <span class="user-profile" (click)="viewProfile()">Welcome, {{ currentUser.username }} !</span>
         <button (click)="logout()">Logout</button>
       </ng-container>
       <ng-container *ngIf="!currentUser">

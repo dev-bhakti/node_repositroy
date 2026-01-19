@@ -23,7 +23,11 @@ export class AppComponent implements OnInit {
       this.currentUser = user;
     });
   }
-  
+
+  viewProfile(){
+     this.router.navigate(['/profile']);
+  }
+
   logout(): void {
     this.authService.logout();
     this.router.navigate(['/login']);
