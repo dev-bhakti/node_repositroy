@@ -87,3 +87,7 @@
   color: antiquewhite; 
   padding: 2rem;
 }
+
+.status-filter-dropdown{
+  font-family: cursive;
+}

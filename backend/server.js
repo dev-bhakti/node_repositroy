@@ -21,10 +21,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/api', routes);
 
 
-// Middleware related Error handling 
+// Server related Error handling 
 app.use((err, req, res, next) => {
   console.log(err,'error ', res, 'res ')
   console.error(err.stack);
+  //  handling 500 error
   res.status(500).json({
     success: false,
     message: 'Internal server error',
@@ -32,7 +33,7 @@ app.use((err, req, res, next) => {
   });
 });
 
-// 404 handler
+// handling 404 error
 app.use((req, res) => {
   res.status(404).json({
     success: false,

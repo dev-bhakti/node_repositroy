@@ -42,7 +42,20 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     tableName: 'users',
     timestamps: true,
-   
+     hooks: {
+      beforeCreate: async (user) => {
+        if (user.password) {
+          const salt = await bcrypt.genSalt(10);
+          user.password = await bcrypt.hash(user.password, salt);
+        }
+      },
+      beforeUpdate: async (user) => {
+        if (user.changed('password')) {
+          const salt = await bcrypt.genSalt(10);
+          user.password = await bcrypt.hash(user.password, salt);
+        }
+      }
+    }
   });
 
   User.prototype.toJSON = function() {
@@ -50,6 +63,11 @@ module.exports = (sequelize, DataTypes) => {
     delete values.password;
     return values;
   };
+
+    User.prototype.validatePassword = async function(password) {
+    return await bcrypt.compare(password, this.password);
+  };
+
 
   return User;
 };

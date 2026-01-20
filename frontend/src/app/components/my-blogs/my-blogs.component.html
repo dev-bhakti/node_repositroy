@@ -6,7 +6,7 @@
 
   <div class="filter-bar filter-blog" >
     <label class="status-filter" for="statusFilter">Filter by status: </label>
-    <select id="statusFilter" [(ngModel)]="filterStatus" (change)="onFilterChange()">
+    <select id="statusFilter" class="status-filter-dropdown" [(ngModel)]="filterStatus" (change)="onFilterChange()">
       <option value="">All</option>
       <option value="draft">Draft</option>
       <option value="published">Published</option>

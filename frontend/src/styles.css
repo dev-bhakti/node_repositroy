@@ -42,6 +42,7 @@ body {
 .navbar nav {
   display: flex;
   gap: 1.5rem;
+  font-family: cursive;
 }
 
 .navbar a {
@@ -74,6 +75,7 @@ main {
   padding: 2rem 0;
   background-image: url("C:/Users/2608473/Downloads/blogImg2.jpg");
   background-size: cover;
+  font-family: cursive;
 }
 
 /* Cards */
@@ -140,37 +142,49 @@ main {
 .btn-primary {
   background-color: #3498db;
   color: white;
+  font-family: cursive;
 }
 
 .btn-primary:hover {
   background-color: #2980b9;
+  font-family: cursive;
+
 }
 
 .btn-success {
   background-color: #27ae60;
   color: white;
+  font-family: cursive;
 }
 
 .btn-success:hover {
   background-color: #229954;
+  font-family: cursive; 
 }
 
 .btn-danger {
   background-color: #e74c3c;
   color: white;
+  font-family: cursive;
+
 }
 
 .btn-danger:hover {
   background-color: #c0392b;
+  font-family: cursive;
+
 }
 
 .btn-secondary {
   background-color: #95a5a6;
   color: white;
+  font-family: cursive;
 }
 
 .btn-secondary:hover {
   background-color: #7f8c8d;
+  font-family: cursive;
+
 }
 
 .btn:disabled {

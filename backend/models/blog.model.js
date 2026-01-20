@@ -1,4 +1,5 @@
-// Created postgres using npx sequelize-cli model:generate --name blogs --attributes column:datatype
+// Created postgres using 
+// npx sequelize-cli model:generate --name table_name --attributes column:datatype
 module.exports = (sequelize, DataTypes) => {
   const Blog = sequelize.define('Blog', {
     id: {

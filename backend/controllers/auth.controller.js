@@ -93,6 +93,16 @@ exports.login = async (req, res) => {
       });
     }
 
+        // Validate password
+    const isValidPassword = await user.validatePassword(password);
+
+    if (!isValidPassword) {
+      return res.status(401).json({
+        success: false,
+        message: 'Invalid email or password.'
+      });
+    }
+
     if (!user.isActive) {
       return res.status(403).json({
         success: false,

@@ -4,7 +4,7 @@ const dbConfig = require('../config/database.config');
 const env = process.env.NODE_ENV || 'development';
 const config = dbConfig[env];
 
-const sequelize = new Sequelize(
+const sequelize = new Sequelize( //creating postgres instance
   config.database,
   config.username,
   config.password,

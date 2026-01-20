@@ -28,8 +28,9 @@ margin-bottom: 1.5rem;
 }
 
 .search-input{
-   flex: 1; 
-   padding:12px
+    flex: 1; 
+    padding:12px;  
+    font-family: cursive;
 }
 
 .no-blogs-text{
