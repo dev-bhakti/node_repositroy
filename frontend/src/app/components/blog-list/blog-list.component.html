@@ -1,7 +1,9 @@
 <div>
-  <h2 class="blog-page-text">All Blogs</h2>
+  <h2 class="blog-page-text" style="color: black;">Welcome to the BookNest</h2>
 
-  <div class="search-bar">
+  <!-- <h2 class="blog-page-text">All Blogs</h2> -->
+
+<!-- <div class="search-bar">
     <div class="search-bar-input">
       <input
         type="text"
@@ -12,7 +14,7 @@
       >
       <button class="btn btn-primary" (click)="onSearch()">Search</button>
     </div>
-  </div>
+  </div> -->
 
   <div class="spinner" *ngIf="loading"></div>
 
@@ -20,6 +22,7 @@
     {{ errorMessage }}
   </div>
 
+  {{books | json}}
   <div class="blog-list" *ngIf="!loading && blogs.length > 0">
     <div class="blog-item" *ngFor="let blog of blogs">
       <h3>{{ blog.title }}</h3>
@@ -46,6 +49,6 @@
     <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
     <span>Page {{ currentPage }} of {{ totalPages }}</span>
     <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
-  </div>
+  </div> -->
 </div>
 

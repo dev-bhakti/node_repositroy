@@ -19,6 +19,40 @@ export interface Blog {
   };
 }
 
+export interface Book {
+  id: number;
+  title: string;
+  // content: string;
+  // summary?: string;
+  // slug: string;
+  // userId: number;
+  book_type: string;
+  publishedBy: string;
+  price: number;
+  // createdAt: string;
+  // updatedAt: string;
+  author?: {
+    id: number;
+    // username: string;
+    email: string;
+    firstName?: string;
+    lastName?: string;
+  };
+}
+
+export interface BookListResponse {
+  success: boolean;
+  data: {
+    books: Book[];
+    pagination: {
+      total: number;
+      page: number;
+      limit: number;
+      totalPages: number;
+    };
+  };
+}
+
 export interface BlogListResponse {
   success: boolean;
   data: {

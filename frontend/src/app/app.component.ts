@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { AuthService } from './services/auth.service';
 import { User } from './models/auth.model';
+import { filter, Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +10,15 @@ import { User } from './models/auth.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'BlogVerse';
+  title = 'BookNest';
   currentUser: User | null = null;
+
+  
+ showLoginBtn = false;
+  showRegisterBtn = false;
+
+  private destroy$ = new Subject<void>();
+
 
   constructor(
     private authService: AuthService,
@@ -22,6 +30,26 @@ export class AppComponent implements OnInit {
       console.log(this.currentUser,'currentUser')
       this.currentUser = user;
     });
+
+    
+this.updateButtons(this.router.url);
+
+    // Update on every navigation end
+    this.router.events
+      .pipe(
+        filter((e): e is NavigationEnd => e instanceof NavigationEnd),
+        takeUntil(this.destroy$)
+      )
+      .subscribe(e => this.updateButtons(e.urlAfterRedirects));
+
+  }
+
+private updateButtons(url: string): void {
+    const onLogin = url.includes('/login');
+    const onRegister = url.includes('/register');
+
+    this.showRegisterBtn = onLogin;   // show "Register" when on login
+    this.showLoginBtn = onRegister;   // show "Login" when on register
   }
 
   viewProfile(){
@@ -36,5 +64,20 @@ export class AppComponent implements OnInit {
   goToHomePage(): void {
     this.router.navigate(['/']);
   }
+
+  goToLoginPage():void{
+    this.router.navigate(['/login']);
+  }
+
+  goToRegisterPage():void{
+    this.router.navigate(['/register']);
+  }
+
+  
+ ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
 }
 

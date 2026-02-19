@@ -32,6 +32,7 @@ db.User.hasMany(db.Blog, { //single user create many blogs
   as: 'blogs'
 });
 
+
 db.Blog.belongsTo(db.User, { //To check blog created by which user
   foreignKey: 'userId',
   as: 'author'

@@ -1,0 +1,42 @@
+<div>
+  <div class="spinner" *ngIf="loading"></div>
+
+  <div class="alert alert-error" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+
+  <div class="card" *ngIf="!loading && blog">
+    <div class="blog-card">
+      <div>
+        <h2>{{ blog.title }}</h2>
+        <div class="meta">
+          <span>By {{ getAuthorName() }}</span>
+          <span> | </span>
+          <span>{{ blog.publishedAt ? (blog.publishedAt | date: 'medium') : (blog.createdAt | date: 'medium') }}</span>
+          <span> | </span>
+          <span class="status-badge" [class.published]="blog.status === 'published'" [class.draft]="blog.status === 'draft'">
+            {{ blog.status }}
+          </span>
+        </div>
+      </div>
+      <div *ngIf="isAuthor" class="button-class">
+        <button class="btn btn-primary" (click)="editBlog()">Edit</button>
+        <button class="btn btn-danger" (click)="deleteBlog()">Delete</button>
+      </div>
+    </div>
+
+    <div class="tags" *ngIf="blog.tags && blog.tags.length > 0">
+      <span class="tag" *ngFor="let tag of blog.tags">{{ tag }}</span>
+    </div>
+
+    <div class="content">
+      {{ blog.content }}
+    </div>
+
+    
+  </div>
+</div>
+
+<button class="btn btn-primary back-button" (click)="goBackToAllBlogs()">
+      Back to Blogs
+    </button>
