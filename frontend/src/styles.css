@@ -212,9 +212,12 @@ main {
 
 /* Blog List */
 .blog-list {
-  /* display: grid; */
-  display: flex;
+  display: grid;
+  /* display: flex; */
   gap: 1.5rem;
+  padding: 0;
+  grid-template-columns: repeat(3,1fr);
+  width: 100%;
 }
 
 .blog-item {
@@ -223,7 +226,7 @@ main {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   transition: transform 0.3s, box-shadow 0.3s;
-  width: 50%;
+  /* width: 50%; */
 }
 
 .blog-item:hover {
