@@ -15,9 +15,12 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component:ProfileComponent},
   { path: 'blog/:id', component: BlogDetailComponent },
+  { path: 'book/:id', component: BlogDetailComponent },
   { path: 'create-blog', component: BlogFormComponent, canActivate: [AuthGuard] },
   { path: 'add-book', component: BlogFormComponent, canActivate: [AuthGuard] },
   { path: 'edit-blog/:id', component: BlogFormComponent, canActivate: [AuthGuard] },
+  { path: 'edit-book/:id', component: BlogFormComponent, canActivate: [AuthGuard] },
+
   { path: 'my-blogs', component: MyBlogsComponent, canActivate: [AuthGuard] },
   { path: 'my-books', component: MyBlogsComponent, canActivate: [AuthGuard] },
 

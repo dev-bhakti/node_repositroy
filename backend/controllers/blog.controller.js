@@ -154,7 +154,7 @@ exports.createBlog = async (req, res) => {
 
     res.status(201).json({
       success: true,
-      message: 'Blog created successfully.',
+      message: 'Book Added successfully.',
       data: {
         blog: createdBlog
       }
@@ -162,7 +162,7 @@ exports.createBlog = async (req, res) => {
   } catch (error) {
     res.status(500).json({
       success: false,
-      message: 'Error creating blog.',
+      message: 'Error adding book.',
       error: error.message
     });
   }

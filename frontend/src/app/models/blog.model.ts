@@ -3,6 +3,7 @@ export interface Blog {
   title: string;
   book_type:string;
   book_author:string;
+  // book_price: string;
   content: string;
   summary?: string;
   slug: string;

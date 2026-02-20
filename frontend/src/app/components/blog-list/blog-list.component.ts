@@ -53,7 +53,7 @@ export class BlogListComponent implements OnInit {
   }
 
   viewBlog(id: number): void {
-    this.router.navigate(['/blog', id]);
+    this.router.navigate(['/book', id]);
   }
 
   nextPage(): void {
