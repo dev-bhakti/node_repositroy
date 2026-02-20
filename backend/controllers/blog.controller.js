@@ -29,6 +29,8 @@ exports.getAllBlogs = async (req, res) => {
     if (search) {
       whereClause[db.Sequelize.Op.or] = [
         { title: { [db.Sequelize.Op.iLike]: `%${search}%` } },
+        { book_type: { [db.Sequelize.Op.iLike]: `%${search}` } },
+        { book_author: { [db.Sequelize.Op.iLike]: `%${search}` } },
         { content: { [db.Sequelize.Op.iLike]: `%${search}%` } },
         { summary: { [db.Sequelize.Op.iLike]: `%${search}%` } }
       ];
@@ -105,14 +107,14 @@ exports.getBlogById = async (req, res) => {
 // Create new blog
 exports.createBlog = async (req, res) => {
   try {
-    const { title, content, summary, status, tags } = req.body;
+    const { title, content, book_type,book_author,summary, status, tags } = req.body;
     const userId = req.user.id;
 
     // Validate input
-    if (!title || !content) {
+    if (!title || !book_type || !content) {
       return res.status(400).json({
         success: false,
-        message: 'Title and content are required.'
+        message: 'Title and book_type are required.'
       });
     }
 
@@ -131,6 +133,8 @@ exports.createBlog = async (req, res) => {
     const blog = await Blog.create({
       title,
       content,
+      book_type,
+      book_author,
       summary,
       slug,
       userId,
@@ -168,7 +172,7 @@ exports.createBlog = async (req, res) => {
 exports.updateBlog = async (req, res) => {
   try {
     const { id } = req.params;
-    const { title, content, summary, status, tags } = req.body;
+    const { title, content, book_type, book_author, summary, status, tags } = req.body;
     const userId = req.user.id;
 
     // Find blog
@@ -216,6 +220,8 @@ exports.updateBlog = async (req, res) => {
     // Update blog
     const updateData = {};
     if (title) updateData.title = title;
+    if(book_type) updateData.book_type = book_type;
+    if(book_author) updateData.book_author = book_author;
     if (content) updateData.content = content;
     if (summary !== undefined) updateData.summary = summary;
     if (status) {

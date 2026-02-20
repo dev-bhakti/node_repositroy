@@ -6,7 +6,6 @@ import {
   Blog,
   BlogListResponse,
   BlogResponse,
-  BookListResponse,
   CreateBlogRequest,
   UpdateBlogRequest
 } from '../models/blog.model';
@@ -16,7 +15,6 @@ import {
 })
 export class BlogService {
   private apiUrl = `${environment.apiUrl}/blogs`;
-  private apiUrl1 = `${environment.apiUrl}/books`;
 
   constructor(private http: HttpClient) {}
 
@@ -34,22 +32,6 @@ export class BlogService {
     }
 
     return this.http.get<BlogListResponse>(this.apiUrl, { params });
-  }
-
-  getAllBooks(page: number = 1, limit: number = 10): Observable<BookListResponse> {
-    let params = new HttpParams()
-      .set('page', page.toString())
-      .set('limit', limit.toString());
-    
-    // if (book_type) {
-    //   params = params.set('status', book_type);
-    // }
-    
-    // if (search) {
-    //   params = params.set('search', search);
-    // }
-
-    return this.http.get<BookListResponse>(this.apiUrl, { params });
   }
 
   getBlogById(id: number): Observable<BlogResponse> {

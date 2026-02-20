@@ -10,7 +10,6 @@ import { Blog } from '../../models/blog.model';
 })
 export class BlogListComponent implements OnInit {
   blogs: Blog[] = [];
-  books:any;
   loading = false;
   errorMessage = '';
   
@@ -26,7 +25,6 @@ export class BlogListComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadBlogs();
-    this.loadBooks();
   }
 
   loadBlogs(): void {
@@ -44,28 +42,6 @@ export class BlogListComponent implements OnInit {
       },
       error: (error) => {
         this.errorMessage = error.error?.message || 'Failed to load blogs.';
-        this.loading = false;
-      }
-    });
-  }
-
-    loadBooks(): void {
-    this.loading = true;
-    this.errorMessage = '';
-
-    this.blogService.getAllBooks(this.currentPage, this.limit).subscribe({
-      next: (response) => {
-        console.log(response,'blogs response');
-        console.log(response.data,'response data')
-        this.books = response.data.books;
-        console.log('books',response.data);
-        
-        this.currentPage = response.data.pagination.page;
-        this.totalPages = response.data.pagination.totalPages;
-        this.loading = false;
-      },
-      error: (error) => {
-        this.errorMessage = error.error?.message || 'Failed to load books.';
         this.loading = false;
       }
     });

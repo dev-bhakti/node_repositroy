@@ -32,17 +32,17 @@
 }
 
 .status-badge.published {
-  background-color: #d4edda;
+  /* background-color: #d4edda; */
   color: #155724;
 }
 
 .status-badge.draft {
-  background-color: #fff3cd;
+  /* background-color: #fff3cd; */
   color: #856404;
 }
 
 .status-badge.archived {
-  background-color: #d6d8db;
+  /* background-color: #d6d8db; */
   color: #383d41;
 }
 

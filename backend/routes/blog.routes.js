@@ -12,6 +12,8 @@ router.post('/', authMiddleware, blogController.createBlog); // create blog
 router.put('/:id', authMiddleware, blogController.updateBlog); //edit blog by id
 router.delete('/:id', authMiddleware, blogController.deleteBlog); //delete blog by id
 router.get('/user/my-blogs', authMiddleware, blogController.getUserBlogs); //get user specific blogs
+router.get('/user/my-books', authMiddleware, blogController.getUserBlogs); //get user specific blogs
+
 
 module.exports = router;
 

@@ -6,9 +6,9 @@
     <nav>
       <!-- <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a> -->
       <ng-container *ngIf="currentUser">
-        <!-- <a routerLink="/my-blogs" routerLinkActive="active">My Blogs</a>
-        <a routerLink="/create-blog" routerLinkActive="active">Create Blog</a> -->
-        <span class="user-profile" (click)="viewProfile()">{{ currentUser.firstName }} {{currentUser.lastName}} !</span>
+        <span class="user-name" (click)="viewProfile()">Hello {{currentUser.username}} {{ currentUser.firstName }} {{currentUser.lastName}} !</span>
+        <button class="user-profile btn btn-light" style="background: lightgray;font-family: cursive;" routerLink="/my-books" routerLinkActive="active">My Books</button>
+        <button class="user-profile btn btn-light" style="background: lightgray;font-family: cursive;" routerLink="/add-book" routerLinkActive="active">Add Book</button> 
         <button class="btn btn-light" style="background: lightgray;font-family: cursive;" (click)="logout()">Logout</button>
       </ng-container>
       <ng-container *ngIf="!currentUser">

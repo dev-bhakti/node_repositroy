@@ -25,6 +25,7 @@ db.sequelize = sequelize;
 // Imported models here
 db.User = require('./user.model')(sequelize, Sequelize);
 db.Blog = require('./blog.model')(sequelize, Sequelize);
+db.Book = require('./book.model')(sequelize, Sequelize);
 
 // Define associations with db
 db.User.hasMany(db.Blog, { //single user create many blogs
@@ -32,11 +33,22 @@ db.User.hasMany(db.Blog, { //single user create many blogs
   as: 'blogs'
 });
 
+db.User.hasMany(db.Book, { //single user create many blogs
+  foreignKey: 'userId',
+  as: 'book'
+});
+
 
 db.Blog.belongsTo(db.User, { //To check blog created by which user
   foreignKey: 'userId',
   as: 'author'
 });
+
+
+// db.Book.belongsTo(db.User, { //To check blog created by which user
+//   foreignKey: 'userid',
+//   as: 'author'
+// });
 
 module.exports = db;
 

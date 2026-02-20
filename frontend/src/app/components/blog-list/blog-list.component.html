@@ -3,18 +3,18 @@
 
   <!-- <h2 class="blog-page-text">All Blogs</h2> -->
 
-<!-- <div class="search-bar">
+<div class="search-bar">
     <div class="search-bar-input">
       <input
         type="text"
         [(ngModel)]="searchQuery"
-        placeholder="Search blogs..."
+        placeholder="Search books..."
         (keyup.enter)="onSearch()"
         class="search-input"
       >
       <button class="btn btn-primary" (click)="onSearch()">Search</button>
     </div>
-  </div> -->
+  </div>
 
   <div class="spinner" *ngIf="loading"></div>
 
@@ -22,10 +22,10 @@
     {{ errorMessage }}
   </div>
 
-  {{books | json}}
   <div class="blog-list" *ngIf="!loading && blogs.length > 0">
     <div class="blog-item" *ngFor="let blog of blogs">
-      <h3>{{ blog.title }}</h3>
+      <!-- {{blogs | json}} -->
+      <h3>{{ blog.title }} | {{blog.book_author}}</h3>
       <div class="meta">
         <span>By {{ getAuthorName(blog) }}</span>
         <span> | </span>
@@ -35,13 +35,13 @@
       <div class="tags" *ngIf="blog.tags && blog.tags.length > 0">
         <span class="tag" *ngFor="let tag of blog.tags">{{ tag }}</span>
       </div>
-      <button class="btn btn-primary" (click)="viewBlog(blog.id)">View More</button>
+      <button class="btn btn-primary" (click)="viewBlog(blog.id)">View Book Details</button>
     </div>
   </div>
 
   <div *ngIf="!loading && blogs.length === 0">
     <p class="no-blogs-text">
-      No blogs found. {{ searchQuery ? 'Try a different search term.' : 'Be the first to create one!' }}
+      No books found. {{ searchQuery ? 'Try a different search term.' : 'Be the first to add one!' }}
     </p>
   </div>
 
@@ -49,6 +49,6 @@
     <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
     <span>Page {{ currentPage }} of {{ totalPages }}</span>
     <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
-  </div> -->
+  </div>
 </div>
 

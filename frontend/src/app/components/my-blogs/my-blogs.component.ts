@@ -54,6 +54,8 @@ export class MyBlogsComponent implements OnInit {
 
   createBlog(): void {
     this.router.navigate(['/create-blog']);
+    this.router.navigate(['/add-book']);
+
   }
 
   viewBlog(id: number): void {

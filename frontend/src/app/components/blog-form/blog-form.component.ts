@@ -23,8 +23,10 @@ export class BlogFormComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     this.blogForm = this.fb.group({
-      title: ['', [Validators.required, Validators.minLength(3)]],
-      content: ['', [Validators.required, Validators.minLength(10)]],
+      title: ['',[Validators.required]],
+      book_type:[''],
+      book_author:[''],
+      content: ['', [Validators.minLength(10)]],
       summary: [''],
       status: ['draft', Validators.required],
       tags: ['']
@@ -50,6 +52,8 @@ export class BlogFormComponent implements OnInit {
         const blog = response.data.blog;
         this.blogForm.patchValue({
           title: blog.title,
+          book_type:blog.book_type,
+          book_author:blog.book_author,
           content: blog.content,
           summary: blog.summary,
           status: blog.status,
@@ -76,6 +80,8 @@ export class BlogFormComponent implements OnInit {
     const formValue = this.blogForm.value;
     const blogData = {
       title: formValue.title,
+      book_type:formValue.book_type,
+      book_author:formValue.book_author,
       content: formValue.content,
       summary: formValue.summary,
       status: formValue.status,

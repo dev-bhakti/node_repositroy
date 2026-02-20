@@ -1,12 +1,11 @@
-// Created postgres using 
-// npx sequelize-cli model:generate --name table_name --attributes column:datatype
 module.exports = (sequelize, DataTypes) => {
-  const Blog = sequelize.define('Blog', {
+  const Book = sequelize.define('Book', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
     },
+
     title: {
       type: DataTypes.STRING(200),
       allowNull: false,
@@ -14,55 +13,52 @@ module.exports = (sequelize, DataTypes) => {
         len: [3, 200]
       }
     },
-    book_type:{
-      type: DataTypes.STRING(200),
-      allowNull: false
-    },
-    book_author:{
-      type: DataTypes.STRING(200),
-      allowNull:false
-    },
-    content: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-      validate: {
-        len: [10, 50000]
-      }
-    },
+
     summary: {
       type: DataTypes.STRING(500),
       allowNull: true
     },
-    slug: {
-      type: DataTypes.STRING(250),
-      allowNull: false,
-      unique: true
-    },
+
     userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: 'users',
         key: 'id'
-      }
+      },
+      onDelete: 'CASCADE'
     },
+
     status: {
       type: DataTypes.ENUM('draft', 'published', 'archived'),
       defaultValue: 'draft'
+      // This aligns with your PostgreSQL enum: book_status
     },
-    publishedAt: {
+
+    publishedat: {
       type: DataTypes.DATE,
       allowNull: true
     },
+
     tags: {
       type: DataTypes.ARRAY(DataTypes.STRING),
       defaultValue: []
+    },
+
+    createdat : {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW
+    },
+
+    updatedat: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW
     }
-  }, {
-    tableName: 'blogs',
+  },
+  {
+    tableName: 'book',
     timestamps: true
   });
 
-  return Blog;
+  return Book;
 };
-

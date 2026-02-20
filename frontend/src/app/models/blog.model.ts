@@ -1,6 +1,8 @@
 export interface Blog {
   id: number;
   title: string;
+  book_type:string;
+  book_author:string;
   content: string;
   summary?: string;
   slug: string;
@@ -76,6 +78,8 @@ export interface BlogResponse {
 
 export interface CreateBlogRequest {
   title: string;
+  book_type: string;
+  book_author: string;
   content: string;
   summary?: string;
   status?: 'draft' | 'published' | 'archived';
@@ -84,6 +88,8 @@ export interface CreateBlogRequest {
 
 export interface UpdateBlogRequest {
   title?: string;
+  book_type?: string;
+  book_author?: string;
   content?: string;
   summary?: string;
   status?: 'draft' | 'published' | 'archived';
