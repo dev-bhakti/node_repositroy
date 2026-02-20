@@ -1,5 +1,6 @@
 <div>
   <h2 class="blog-page-text" style="color: lightyellow;">Welcome to the BookNest</h2>
+    <h3 style="text-align: center; color: cadetblue; margin-bottom: 10px;">Escape the Ordinary, Dive into a Book</h3>
 
   <!-- <h2 class="blog-page-text">All Blogs</h2> -->
 
@@ -25,6 +26,9 @@
   <div class="blog-list" *ngIf="!loading && blogs.length > 0">
     <div class="blog-item" *ngFor="let blog of blogs">
       <!-- {{blogs | json}} -->
+    
+      <img src="{{blog.image}}" />
+      
       <h3>{{ blog.title }} | {{blog.book_author}}</h3>
       <div class="meta">
         <span>By {{ getAuthorName(blog) }}</span>
@@ -35,6 +39,7 @@
       <div class="tags" *ngIf="blog.tags && blog.tags.length > 0">
         <span class="tag" *ngFor="let tag of blog.tags">{{ tag }}</span>
       </div>
+      
       <button class="btn btn-primary" (click)="viewBlog(blog.id)">View Book Details</button>
     </div>
   </div>

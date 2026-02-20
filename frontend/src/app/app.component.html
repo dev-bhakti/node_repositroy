@@ -6,10 +6,12 @@
     <nav>
       
       <ng-container *ngIf="currentUser">
-        <span class="user-name" (click)="viewProfile()">Hello {{currentUser.username}} {{ currentUser.firstName }} {{currentUser.lastName}} !</span>
+        <!-- <span class="user-name" (click)="viewProfile()">Hello {{currentUser.username}} {{ currentUser.firstName }} {{currentUser.lastName}} !</span> -->
+        <span class="user-name" (click)="viewProfile()">Hello {{currentUser.username}} !</span>
+
       <a   class="user-profile"  style="color: black;" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
 
-        <button  class="user-profile btn btn-light" style="background: lightgray;font-family: cursive;" routerLink="/my-books" routerLinkActive="active">My Books</button>
+        <button  class="user-profile btn btn-light" style="background: lightgray;font-family: cursive;" routerLink="/my-books" routerLinkActive="active">Books By Me</button>
         <button class="user-profile btn btn-light" style="background: lightgray;font-family: cursive;" routerLink="/add-book" routerLinkActive="active">Add Book</button> 
         <button class="btn btn-light" style="background: lightgray;font-family: cursive;" (click)="logout()">Logout</button>
       </ng-container>

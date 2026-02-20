@@ -24,8 +24,8 @@
     <div class="blog-item" *ngFor="let blog of blogs">
       <div class="blogs-card">
         <div class="title-blog">
-         
-          <h3>{{ blog.title}}</h3>|<span>Author: {{blog.book_author}}</span>
+         <img src="{{blog.image}}" />
+          <h3>{{ blog.title}}</h3>|<span style="color: tan;">Author: {{blog.book_author}}</span>
           
           <div class="meta">
             <span>{{ blog.createdAt | date: 'medium' }}</span>
@@ -38,7 +38,7 @@
               {{ blog.status }}
             </span>
           </div>
-          <p class="summary" *ngIf="blog.summary">{{ blog.summary }}</p>
+          <p class="summary" style="color: skyblue;" *ngIf="blog.summary">{{ blog.summary }}</p>
           <div class="tags" *ngIf="blog.tags && blog.tags.length > 0">
             <span class="tag" *ngFor="let tag of blog.tags">{{ tag }}</span>
           </div>
@@ -46,8 +46,8 @@
       </div>
       <div class="actions">
         <button class="btn btn-primary" (click)="viewBlog(blog.id)">View</button>
-        <button class="btn btn-primary" (click)="editBlog(blog.id)">Edit</button>
-        <button class="btn btn-danger" (click)="deleteBlog(blog.id)">Delete</button>
+        <!-- <button class="btn btn-primary" (click)="editBlog(blog.id)">Edit</button>
+        <button class="btn btn-danger" (click)="deleteBlog(blog.id)">Delete</button> -->
       </div>
     </div>
   </div>

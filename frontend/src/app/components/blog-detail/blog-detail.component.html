@@ -8,6 +8,7 @@
   <div class="card" *ngIf="!loading && blog">
     <div class="blog-card">
       <div>
+        <img src="{{blog.image}}" />
         <h2>{{ blog.title }}</h2>
         <div class="meta">
           <span>By {{ getAuthorName() }}</span>
@@ -20,8 +21,8 @@
         </div>
       </div>
       <div *ngIf="isAuthor" class="button-class">
-        <button class="btn btn-primary" (click)="editBlog()">Edit</button>
-        <button class="btn btn-danger" (click)="deleteBlog()">Delete</button>
+        <!-- <button class="btn btn-primary" (click)="editBlog()">Edit</button> -->
+        <!-- <button class="btn btn-danger" (click)="deleteBlog()">Delete</button> -->
       </div>
     </div>
 
